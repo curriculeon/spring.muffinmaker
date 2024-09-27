@@ -1,9 +1,17 @@
 package com.github.curriculeon.models;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+
+@Entity
 public class Muffin {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String flavor;
@@ -11,23 +19,28 @@ public class Muffin {
     public Muffin() {
     }
 
-    public Muffin(String flavor) {
+    public Muffin(String flavor)
+    {
         this.flavor = flavor;
     }
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public String getFlavor() {
+    public String getFlavor()
+    {
         return flavor;
     }
 
-    public void setFlavor(String flavor) {
+    public void setFlavor(String flavor)
+    {
         this.flavor = flavor;
     }
 
@@ -41,7 +54,8 @@ public class Muffin {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(id, flavor);
     }
 }
