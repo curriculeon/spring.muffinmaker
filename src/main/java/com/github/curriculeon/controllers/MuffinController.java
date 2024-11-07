@@ -4,7 +4,11 @@ import com.github.curriculeon.models.Muffin;
 import com.github.curriculeon.services.MuffinService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping("baker")
 public class MuffinController {
     private MuffinService service;
 

@@ -4,7 +4,11 @@ import com.github.curriculeon.services.BakerService;
 import com.github.curriculeon.models.Baker;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping("baker")
 public class BakerController {
     private BakerService service;
 

@@ -2,7 +2,9 @@ package com.github.curriculeon.services;
 
 import com.github.curriculeon.repositories.BakerRepository;
 import com.github.curriculeon.models.Baker;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BakerService {
     private BakerRepository repository;
 

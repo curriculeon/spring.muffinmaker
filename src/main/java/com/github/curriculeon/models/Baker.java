@@ -1,9 +1,14 @@
 package com.github.curriculeon.models;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
-
+@Entity
 public class Baker {
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
