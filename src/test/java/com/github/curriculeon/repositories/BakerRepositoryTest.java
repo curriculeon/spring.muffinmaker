@@ -1,7 +1,9 @@
 package com.github.curriculeon.repositories;
 
+import com.github.curriculeon.controllers.BakerController;
 import com.github.curriculeon.models.Baker;
 import com.github.curriculeon.services.BakerService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -25,14 +27,21 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringRunner.class)
 public class BakerRepositoryTest {
 
+    @MockBean
+        private BakerRepository bakerRepository;
 
-        private BakerRepository bakerRepository = mock(BakerRepository.class);
+        private BakerService bakerService;
 
-        private BakerService bakerService= new BakerService(bakerRepository);
+
+    @Before
+    public void setup(){
+        bakerRepository =mock(BakerRepository.class);
+        bakerService =  new BakerService(bakerRepository);
+    }
 
 
         @Test
-        public void testCreate() {
+        public void testShowById() {
             Long bakerId = 1L;
             Baker baker = new Baker();
             baker.setId(bakerId);
@@ -49,5 +58,24 @@ public class BakerRepositoryTest {
 
             Mockito.verify(bakerRepository, times(1)).findById(bakerId);
         }
+
+    @Test
+    public void testRepoSave() {
+        Long bakerId = 1L;
+        Baker baker = new Baker();
+        baker.setId(bakerId);
+        baker.setName("John Baker");
+
+        BDDMockito
+                .given(bakerRepository.save(baker))
+                .willReturn(baker);
+
+        Baker result = bakerService.create(baker);
+//
+        assertNotNull(result);
+        assertEquals("John Baker", result.getName());
+//
+        Mockito.verify(bakerRepository, times(1)).save(baker);
+    }
     }
 
