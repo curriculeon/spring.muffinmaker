@@ -2,10 +2,14 @@ package com.github.curriculeon.services;
 
 import com.github.curriculeon.models.Muffin;
 import com.github.curriculeon.repositories.MuffinRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MuffinService {
-    private MuffinRepository repository;
 
+    private MuffinRepository repository;
+    @Autowired
     public MuffinService(MuffinRepository repository) {
         this.repository = repository;
     }
